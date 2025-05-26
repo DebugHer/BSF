@@ -20,15 +20,15 @@ export default function Contact() {
     setIsSubmitting(true);
     try {
       // Here you would typically send the data to your backend
-      console.log('Form data:', data);
+      console.log("Form data:", data);
       
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       setSubmitSuccess(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error sending your message. Please try again.');
+      console.error("Error submitting form:", error);
+      alert("There was an error sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -42,7 +42,7 @@ export default function Contact() {
             Contact Us
           </h1>
           <p className="mt-4 text-lg text-gray-500">
-            Have questions about our scholarship program? We're here to help!
+            Have questions about our scholarship program? We are here to help!
           </p>
         </div>
 
@@ -121,7 +121,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
-                        {...register('name', { required: 'Name is required' })}
+                        {...register("name", { required: "Name is required" })}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       />
                       {errors.name && (
@@ -135,11 +135,11 @@ export default function Contact() {
                       </label>
                       <input
                         type="email"
-                        {...register('email', {
-                          required: 'Email is required',
+                        {...register("email", {
+                          required: "Email is required",
                           pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: 'Invalid email address',
+                            message: "Invalid email address",
                           },
                         })}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -155,7 +155,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
-                        {...register('subject', { required: 'Subject is required' })}
+                        {...register("subject", { required: "Subject is required" })}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       />
                       {errors.subject && (
@@ -168,7 +168,7 @@ export default function Contact() {
                         Message
                       </label>
                       <textarea
-                        {...register('message', { required: 'Message is required' })}
+                        {...register("message", { required: "Message is required" })}
                         rows={6}
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       />
@@ -182,10 +182,10 @@ export default function Contact() {
                         type="submit"
                         disabled={isSubmitting}
                         className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
-                          isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                          isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                         }`}
                       >
-                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                        {isSubmitting ? "Sending..." : "Send Message"}
                       </button>
                     </div>
                   </form>

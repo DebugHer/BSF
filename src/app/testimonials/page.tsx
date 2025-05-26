@@ -1,10 +1,22 @@
-import { getTestimonials, Testimonial } from '@/lib/wordpress';
+// Static testimonials data
+const featuredTestimonials = [
+  {
+    name: "Sarah Johnson",
+    title: "Computer Science Major, Class of 2023",
+    quote: "This scholarship changed my life. The financial support allowed me to focus on my studies, and the mentorship program helped me land my dream internship.",
+    story: "Coming from a low-income family, I never thought I would be able to attend a top university. The scholarship program not only provided financial support but also connected me with amazing mentors who guided me through my academic journey. Today, I'm working at a leading tech company and giving back to the community.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Michael Chen",
+    title: "Business Administration, Class of 2022",
+    quote: "The career development resources and networking opportunities provided by the scholarship program were invaluable to my professional growth.",
+    story: "The scholarship program opened doors I never knew existed. Through networking events and career workshops, I built connections that led to multiple internship offers. The mentorship I received helped me develop both professionally and personally.",
+    image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+];
 
-export const revalidate = 3600; // Revalidate every hour
-
-async function TestimonialsPage() {
-  const testimonials = await getTestimonials();
-
+export default function TestimonialsPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero section */}
@@ -25,23 +37,26 @@ async function TestimonialsPage() {
       {/* Testimonials grid */}
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="relative">
+          {featuredTestimonials.map((testimonial) => (
+            <div key={testimonial.name} className="relative">
               <div className="relative bg-white rounded-lg shadow-lg p-8">
                 <div className="absolute -top-4 -left-4">
                   <img
                     className="h-24 w-24 rounded-full ring-4 ring-white"
-                    src={testimonial.acf.image}
-                    alt={testimonial.acf.author}
+                    src={testimonial.image}
+                    alt={testimonial.name}
                   />
                 </div>
                 <div className="pt-12">
                   <blockquote>
-                    <p className="text-xl font-medium text-gray-900">"{testimonial.acf.quote}"</p>
+                    <p className="text-xl font-medium text-gray-900">{testimonial.quote}</p>
                   </blockquote>
                   <div className="mt-6">
-                    <p className="text-base font-medium text-gray-900">{testimonial.acf.author}</p>
-                    <p className="text-base text-gray-500">{testimonial.acf.role}</p>
+                    <p className="text-base font-medium text-gray-900">{testimonial.name}</p>
+                    <p className="text-base text-gray-500">{testimonial.title}</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="text-base text-gray-500">{testimonial.story}</p>
                   </div>
                 </div>
               </div>
@@ -71,6 +86,4 @@ async function TestimonialsPage() {
       </div>
     </div>
   );
-}
-
-export default TestimonialsPage; 
+} 
