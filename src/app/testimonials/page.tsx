@@ -1,10 +1,12 @@
+import Image from "next/image";
+
 // Static testimonials data
 const featuredTestimonials = [
   {
     name: "Sarah Johnson",
     title: "Computer Science Major, Class of 2023",
     quote: "This scholarship changed my life. The financial support allowed me to focus on my studies, and the mentorship program helped me land my dream internship.",
-    story: "Coming from a low-income family, I never thought I would be able to attend a top university. The scholarship program not only provided financial support but also connected me with amazing mentors who guided me through my academic journey. Today, I'm working at a leading tech company and giving back to the community.",
+    story: "Coming from a low-income family, I never thought I would be able to attend a top university. The scholarship program not only provided financial support but also connected me with amazing mentors who guided me through my academic journey. Today, I&apos;m working at a leading tech company and giving back to the community.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
@@ -41,11 +43,15 @@ export default function TestimonialsPage() {
             <div key={testimonial.name} className="relative">
               <div className="relative bg-white rounded-lg shadow-lg p-8">
                 <div className="absolute -top-4 -left-4">
-                  <img
-                    className="h-24 w-24 rounded-full ring-4 ring-white"
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                  />
+                  <div className="relative h-24 w-24">
+                    <Image
+                      className="rounded-full ring-4 ring-white"
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      sizes="96px"
+                    />
+                  </div>
                 </div>
                 <div className="pt-12">
                   <blockquote>

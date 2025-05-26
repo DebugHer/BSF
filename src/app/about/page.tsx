@@ -60,7 +60,7 @@ export default function About() {
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">Meet Our Team</h2>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-500">
-            Our dedicated team works tirelessly to support our scholarship recipients and ensure the program's success.
+            Our dedicated team works tirelessly to support our scholarship recipients and ensure the program&apos;s success.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
