@@ -1,13 +1,18 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <div className="bg-white">
       {/* Hero section */}
       <div className="relative bg-gray-900">
         <div className="absolute inset-0">
-          <img
-            className="h-full w-full object-cover opacity-40"
+          <Image
+            className="object-cover opacity-40"
             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2070&q=80"
             alt="Students studying"
+            fill
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="relative py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
@@ -62,11 +67,15 @@ export default function About() {
           {team.map((member) => (
             <div key={member.name} className="text-center">
               <div className="space-y-4">
-                <img
-                  className="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
-                  src={member.image}
-                  alt={member.name}
-                />
+                <div className="relative mx-auto h-40 w-40 xl:w-56 xl:h-56">
+                  <Image
+                    className="rounded-full"
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width: 768px) 160px, 224px"
+                  />
+                </div>
                 <div className="space-y-2">
                   <div className="text-lg leading-6 font-medium space-y-1">
                     <h3 className="text-gray-900">{member.name}</h3>
@@ -85,21 +94,21 @@ export default function About() {
 
 const team = [
   {
-    name: 'Dr. Jennifer Williams',
-    role: 'Program Director',
-    description: 'With over 15 years of experience in education and philanthropy, Jennifer leads our scholarship program with passion and dedication.',
-    image: 'https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    name: "Dr. Jennifer Williams",
+    role: "Program Director",
+    description: "With over 15 years of experience in education and philanthropy, Jennifer leads our scholarship program with passion and dedication.",
+    image: "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
-    name: 'Marcus Thompson',
-    role: 'Mentorship Coordinator',
-    description: 'Marcus oversees our mentorship program, matching students with industry professionals and ensuring meaningful connections.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    name: "Marcus Thompson",
+    role: "Mentorship Coordinator",
+    description: "Marcus oversees our mentorship program, matching students with industry professionals and ensuring meaningful connections.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
-    name: 'Dr. Lisa Chen',
-    role: 'Academic Advisor',
-    description: 'Lisa provides academic guidance and support to our scholarship recipients, helping them navigate their educational journey.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    name: "Dr. Lisa Chen",
+    role: "Academic Advisor",
+    description: "Lisa provides academic guidance and support to our scholarship recipients, helping them navigate their educational journey.",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
 ]; 

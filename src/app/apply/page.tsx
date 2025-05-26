@@ -1,23 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-
-type ApplicationFormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  education: string;
-  gpa: string;
-  essay: string;
-  resume: FileList;
-};
 
 export default function Apply() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm<ApplicationFormData>();
   const [isLoading, setIsLoading] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -25,48 +10,6 @@ export default function Apply() {
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  const onSubmit = async (data: ApplicationFormData) => {
-    setIsSubmitting(true);
-    try {
-      // Send to Airtable
-      const response = await fetch('/api/submit-application', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit application');
-      }
-      
-      setSubmitSuccess(true);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your application. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  if (submitSuccess) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-green-600 mb-4">Application Submitted!</h2>
-              <p className="text-gray-600">
-                Thank you for applying to our scholarship program. We will review your application and contact you soon.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -89,7 +32,7 @@ export default function Apply() {
           )}
 
           {/* Form container with improved styling */}
-          <div className="relative" style={{ paddingTop: '150%' }}>
+          <div className="relative" style={{ paddingTop: "150%" }}>
             {isMounted && (
               <iframe
                 src="https://docs.google.com/forms/d/e/1FAIpQLSclAFZC337m38ITQ2wuR34bq0TgqLdGZUf6CJN3YxC1ZdDuWA/viewform?embedded=true"
